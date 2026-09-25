@@ -1,3 +1,158 @@
+# ChuChu Pet
+
+> **This repository is a copy of [rullerzhou-afk/clawd-on-desk](https://github.com/rullerzhou-afk/clawd-on-desk)**,
+> the Clawd on Desk desktop pet for AI coding agents (Claude Code, Codex, Cursor and others).
+> All of the app's code belongs to that project and is licensed under AGPL-3.0 (see [LICENSE](LICENSE)).
+> This copy adds one thing: **ChuChu**, my own custom character theme, in the [`chuchu/`](chuchu/) folder.
+> The original README continues below the ChuChu sections.
+
+<p align="center">
+  <img src="chuchu/preview/chuchu.png" width="220" alt="ChuChu, a golden ginger cat">
+</p>
+
+## About ChuChu (my custom sprites)
+
+ChuChu is a golden ginger cat with soft tabby markings, yellow-green eyes, a pink nose and a big fluffy tail.
+ChuChu replaces Clawd's default crab and reacts to what your coding agent is doing.
+
+| | |
+|---|---|
+| Animations | 40, one file per animation |
+| Format | Transparent animated PNG (APNG), 32 frames each |
+| Size | 135 × 135 px (3× Clawd's 45-unit canvas) |
+| Theme ID | `chuchu-theme` (shown in Settings as **ChuChu-Theme**) |
+
+All 40 animations at a glance: [`chuchu/preview/contact-sheet.png`](chuchu/preview/contact-sheet.png)
+
+### What each animation is for
+
+| Group | Animations | When they play |
+|---|---|---|
+| Agent states | thinking, working (laptop), juggling, sweeping, carrying, attention, notification, error | You send a prompt, the agent runs tools or subagents, compacts context, creates a worktree, finishes, needs permission or hits an error |
+| Busy tiers | headphones, building | 2 sessions or 1 subagent running (headphones); 3 or more sessions running (building) |
+| Idle | idle, look-around, speech-bubble, reading, purr, play, stretch | Nothing is happening. The extra idle animations play at random |
+| Sleep | yawning, dozing, collapsing, sleeping, waking | The mouse has been still for about 1 minute; moving it wakes ChuChu |
+| Reactions | click-left, click-right, annoyed, double, double-jump, drag, dizzy | Only while ChuChu is idle: double-click = poke (left or right side, sometimes annoyed), 4 fast clicks = double / double-jump, drag = drag, shake or fling = dizzy |
+| Mini mode | mini-idle, mini-alert, mini-happy, mini-enter, mini-peek, mini-working, mini-walk, mini-enter-sleep, mini-sleep | Drag ChuChu to the right screen edge, or right-click → Mini Mode |
+| Other | outlaw, debugger, roam | outlaw is an Easter egg that needs the cowboy hat and cigarette accessories; debugger plays while checking for updates; roam is walking around |
+
+### Files
+
+```
+chuchu/
+├── chuchu-theme/          ← the theme itself (copy this folder into Clawd's themes directory)
+│   ├── theme.json         ← maps every Clawd state and reaction to a ChuChu animation
+│   └── assets/            ← the 40 APNG animations
+├── install-chuchu.sh      ← one-step installer for Linux and macOS
+├── chuchu-demo.sh         ← plays every agent-driven animation so you can see them
+└── preview/               ← chuchu.png (base art) and contact-sheet.png (all animations)
+```
+
+## Install ChuChu on a new computer
+
+> **Note for AI agents:** follow these steps in order. Run every command yourself and check each result.
+> Steps 1–3 need the user only for `sudo` passwords or installer dialogs.
+
+### 1. Install the Clawd on Desk app
+
+Check whether it is already installed:
+- Linux: `command -v clawd-on-desk` or `dpkg -s clawd-on-desk`
+- macOS: `ls "/Applications/Clawd on Desk.app"`
+- Windows: look for "Clawd on Desk" in the Start menu
+
+If it isn't installed, download the latest installer from
+**https://github.com/rullerzhou-afk/clawd-on-desk/releases/latest**:
+
+| OS | File | Install |
+|---|---|---|
+| Linux (Debian/Ubuntu, x86_64) | `Clawd-on-Desk-<version>-amd64.deb` | `sudo apt install ./Clawd-on-Desk-<version>-amd64.deb` (needs a real terminal for the sudo password) |
+| Linux (other) | `.AppImage` | `chmod +x` it and run it |
+| macOS | `.dmg` | Open it and drag the app into Applications. `brew install --cask clawd-on-desk` also works |
+| Windows | `Clawd-on-Desk-Setup-<version>-x64.exe` (or `-arm64.exe`) | Run the installer |
+
+On Linux you can also install `wmctrl`, which Clawd uses to focus the terminal: `sudo apt install wmctrl`.
+
+### 2. Launch Clawd once, then leave it running
+
+Start **Clawd on Desk** from the app menu (Linux: `clawd-on-desk &`).
+The first launch creates Clawd's settings folder and automatically installs its Claude Code hooks into
+`~/.claude/settings.json`. Don't remove those hooks: they let ChuChu follow what Claude is doing.
+On Linux with Wayland, Clawd restarts itself under XWayland; this is expected.
+
+### 3. Get this repository
+
+```bash
+git clone git@github.com:hanzong111/ChuChu_pet.git
+cd ChuChu_pet
+```
+
+(Use `https://github.com/hanzong111/ChuChu_pet.git` if SSH keys aren't set up.)
+
+### 4. Install and select the theme
+
+**Linux / macOS (automatic):**
+
+```bash
+bash chuchu/install-chuchu.sh
+```
+
+The script:
+1. Stops Clawd. It has to, because Clawd rewrites its settings file when it exits.
+2. Copies `chuchu/chuchu-theme` into Clawd's themes folder.
+3. Sets `"theme": "chuchu-theme"` in `clawd-prefs.json` and keeps a backup named `clawd-prefs.json.bak-before-chuchu`.
+4. Starts Clawd again.
+
+**Windows (manual), in PowerShell from the repo folder:**
+
+```powershell
+Stop-Process -Name "Clawd on Desk" -ErrorAction SilentlyContinue
+$themes = "$env:APPDATA\clawd-on-desk\themes"
+New-Item -ItemType Directory -Force $themes | Out-Null
+Copy-Item -Recurse -Force chuchu\chuchu-theme "$themes\chuchu-theme"
+```
+
+Then start Clawd and choose **Settings → Theme → ChuChu-Theme**.
+
+**Where Clawd keeps its files:**
+
+| OS | Settings folder (contains `clawd-prefs.json` and `themes/`) |
+|---|---|
+| Linux | `~/.config/clawd-on-desk/` |
+| macOS | `~/Library/Application Support/clawd-on-desk/` |
+| Windows | `%APPDATA%\clawd-on-desk\` |
+
+The final layout must be `<settings folder>/themes/chuchu-theme/theme.json`, with `assets/` next to `theme.json`.
+
+### 5. Check that it worked
+
+1. **Validate the theme** (only needs Node.js; no `npm install` required):
+   ```bash
+   node scripts/validate-theme.js chuchu/chuchu-theme
+   ```
+   It should end with `All checks passed!`.
+2. **Confirm it's selected:** `clawd-prefs.json` contains `"theme": "chuchu-theme"`, and the pet on screen is the ginger cat.
+3. **Play the animations:**
+   ```bash
+   bash chuchu/chuchu-demo.sh          # every agent-driven animation, about 45 s
+   bash chuchu/chuchu-demo.sh error    # just one state
+   ```
+   Each line should print `HTTP 200`. The script sends test events to Clawd's local server (port in `~/.clawd/runtime.json`, usually 23333).
+
+### Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| ChuChu-Theme isn't in the Settings theme list | Check the folder layout above, then fully quit and restart Clawd |
+| The crab comes back after a restart | Clawd was still running when the prefs file was edited. Quit it completely, set the theme again, then start it |
+| Clawd hangs when quitting (Linux) | `pkill -9 -x clawd-on-desk`, delete `Singleton*` in the settings folder, then start it again |
+| Clicking ChuChu does nothing | Click reactions only play while ChuChu is idle, not while the agent is working. Also make sure Do Not Disturb is off |
+| Mostly the laptop animation | That's normal: "working" plays whenever the agent is using tools |
+| Demo script says HTTP 000 | Clawd isn't running |
+
+---
+
+# Original Clawd on Desk README
+
 <p align="center">
   <img src="assets/icon.png" width="128" alt="Clawd">
 </p>

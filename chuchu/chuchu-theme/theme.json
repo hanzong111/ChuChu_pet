@@ -1,0 +1,553 @@
+{
+  "schemaVersion": 1,
+  "name": "ChuChu-Theme",
+  "author": "Custom pet artwork",
+  "version": "2.0.0",
+  "description": "ChuChu, the golden ginger cat: 40 smooth 32-frame animations.",
+  "viewBox": {
+    "x": -15,
+    "y": -25,
+    "width": 45,
+    "height": 45
+  },
+  "preview": "idle.png",
+  "eyeTracking": {
+    "enabled": false,
+    "states": []
+  },
+  "sleepSequence": {
+    "mode": "full"
+  },
+  "states": {
+    "idle": [
+      "idle.png"
+    ],
+    "thinking": [
+      "thinking.png"
+    ],
+    "working": [
+      "working.png"
+    ],
+    "juggling": [
+      "headphones.png"
+    ],
+    "sweeping": [
+      "sweeping.png"
+    ],
+    "carrying": [
+      "carrying.png"
+    ],
+    "attention": [
+      "attention.png"
+    ],
+    "notification": [
+      "notification.png"
+    ],
+    "error": [
+      "error.png"
+    ],
+    "dizzy": [
+      "dizzy.png"
+    ],
+    "roam": [
+      "mini-walk.png"
+    ],
+    "yawning": [
+      "yawning.png"
+    ],
+    "dozing": [
+      "dozing.png"
+    ],
+    "collapsing": [
+      "collapsing.png"
+    ],
+    "sleeping": [
+      "sleeping.png"
+    ],
+    "waking": [
+      "waking.png"
+    ]
+  },
+  "layout": {
+    "contentBox": {
+      "x": -6,
+      "y": -8,
+      "width": 27,
+      "height": 26
+    },
+    "marginBox": {
+      "x": -10,
+      "y": -18,
+      "width": 35,
+      "height": 37
+    },
+    "centerX": 7.5,
+    "baselineY": 17.67,
+    "visibleHeightRatio": 0.58,
+    "baselineBottomRatio": 0.05
+  },
+  "workingTiers": [
+    {
+      "minSessions": 3,
+      "file": "building.png"
+    },
+    {
+      "minSessions": 2,
+      "file": "headphones.png"
+    },
+    {
+      "minSessions": 1,
+      "file": "working.png"
+    }
+  ],
+  "jugglingTiers": [
+    {
+      "minSessions": 2,
+      "file": "juggling.png"
+    },
+    {
+      "minSessions": 1,
+      "file": "headphones.png"
+    }
+  ],
+  "idleAnimations": [
+    {
+      "file": "look-around.png",
+      "duration": 6500
+    },
+    {
+      "file": "speech-bubble.png",
+      "duration": 13500
+    },
+    {
+      "file": "reading.png",
+      "duration": 14000
+    },
+    {
+      "file": "purr.png",
+      "duration": 5000
+    },
+    {
+      "file": "play.png",
+      "duration": 6000
+    },
+    {
+      "file": "stretch.png",
+      "duration": 4000
+    }
+  ],
+  "idleEasterEggs": [
+    {
+      "file": "outlaw.png",
+      "duration": 15000,
+      "chance": 0.5,
+      "cooldownMs": 1800000,
+      "requiresAccessories": {
+        "head": "western-cowboy-hat",
+        "mouth": "cigarette"
+      }
+    }
+  ],
+  "updateVisuals": {
+    "checking": "debugger.png"
+  },
+  "reactions": {
+    "drag": {
+      "file": "drag.png"
+    },
+    "clickLeft": {
+      "file": "click-left.png",
+      "duration": 2500
+    },
+    "clickRight": {
+      "file": "click-right.png",
+      "duration": 2500
+    },
+    "annoyed": {
+      "file": "annoyed.png",
+      "duration": 3500
+    },
+    "double": {
+      "files": [
+        "double.png",
+        "double-jump.png"
+      ],
+      "duration": 3500
+    }
+  },
+  "miniMode": {
+    "supported": true,
+    "offsetRatio": 0.486,
+    "states": {
+      "mini-idle": [
+        "mini-idle.png"
+      ],
+      "mini-alert": [
+        "mini-alert.png"
+      ],
+      "mini-happy": [
+        "mini-happy.png"
+      ],
+      "mini-enter": [
+        "mini-enter.png"
+      ],
+      "mini-peek": [
+        "mini-peek.png"
+      ],
+      "mini-working": [
+        "mini-working.png"
+      ],
+      "mini-crabwalk": [
+        "mini-walk.png"
+      ],
+      "mini-enter-sleep": [
+        "mini-enter-sleep.png"
+      ],
+      "mini-sleep": [
+        "mini-sleep.png"
+      ]
+    },
+    "timings": {
+      "minDisplay": {
+        "mini-alert": 4000,
+        "mini-happy": 4000
+      },
+      "autoReturn": {
+        "mini-alert": 4000,
+        "mini-happy": 4000
+      }
+    }
+  },
+  "timings": {
+    "minDisplay": {
+      "attention": 4000,
+      "error": 5000,
+      "sweeping": 5500,
+      "notification": 5000,
+      "carrying": 3000,
+      "working": 1000,
+      "thinking": 1000
+    },
+    "autoReturn": {
+      "attention": 4000,
+      "error": 5000,
+      "sweeping": 300000,
+      "notification": 5000,
+      "carrying": 3000,
+      "dizzy": 6000
+    },
+    "yawnDuration": 3000,
+    "wakeDuration": 1500,
+    "deepSleepTimeout": 600000,
+    "mouseIdleTimeout": 20000,
+    "mouseSleepTimeout": 60000
+  },
+  "hitBoxes": {
+    "default": {
+      "x": -6,
+      "y": -8,
+      "w": 27,
+      "h": 26
+    },
+    "sleeping": {
+      "x": -6,
+      "y": 2,
+      "w": 27,
+      "h": 16
+    },
+    "wide": {
+      "x": -10,
+      "y": -16,
+      "w": 35,
+      "h": 34
+    }
+  },
+  "sleepingHitboxFiles": [
+    "sleeping.png",
+    "collapsing.png",
+    "mini-sleep.png"
+  ],
+  "customization": {
+    "petTint": false,
+    "accessories": {
+      "default": {
+        "staticFrame": {
+          "cx": 12.5,
+          "baseY": -6,
+          "width": 12
+        }
+      },
+      "files": {
+        "outlaw.png": {
+          "visibility": "hidden"
+        },
+        "headphones.png": {
+          "visibility": "hidden"
+        },
+        "building.png": {
+          "visibility": "hidden"
+        },
+        "sleeping.png": {
+          "visibility": "hidden"
+        },
+        "collapsing.png": {
+          "visibility": "hidden"
+        },
+        "waking.png": {
+          "visibility": "hidden"
+        },
+        "double-jump.png": {
+          "visibility": "hidden"
+        },
+        "mini-sleep.png": {
+          "visibility": "hidden"
+        },
+        "mini-enter-sleep.png": {
+          "visibility": "hidden"
+        }
+      }
+    }
+  },
+  "fileHitBoxes": {
+    "idle.png": {
+      "x": -6.33,
+      "y": -8.67,
+      "w": 28.0,
+      "h": 26.67
+    },
+    "thinking.png": {
+      "x": -5.67,
+      "y": -9.33,
+      "w": 26.33,
+      "h": 27.33
+    },
+    "working.png": {
+      "x": -7.33,
+      "y": -8.33,
+      "w": 29.67,
+      "h": 26.33
+    },
+    "headphones.png": {
+      "x": -5.67,
+      "y": -9.33,
+      "w": 26.33,
+      "h": 27.33
+    },
+    "sweeping.png": {
+      "x": -7.33,
+      "y": -9.0,
+      "w": 29.67,
+      "h": 27.0
+    },
+    "carrying.png": {
+      "x": -4.67,
+      "y": -8.67,
+      "w": 24.67,
+      "h": 26.67
+    },
+    "attention.png": {
+      "x": -6.0,
+      "y": -8.67,
+      "w": 27.0,
+      "h": 26.67
+    },
+    "notification.png": {
+      "x": -8.0,
+      "y": -9.67,
+      "w": 30.67,
+      "h": 27.67
+    },
+    "error.png": {
+      "x": -5.67,
+      "y": -10.0,
+      "w": 26.67,
+      "h": 28.0
+    },
+    "dizzy.png": {
+      "x": -7.0,
+      "y": -9.0,
+      "w": 29.0,
+      "h": 27.0
+    },
+    "yawning.png": {
+      "x": -6.33,
+      "y": -9.0,
+      "w": 27.67,
+      "h": 27.0
+    },
+    "dozing.png": {
+      "x": -6.0,
+      "y": -9.0,
+      "w": 27.33,
+      "h": 27.0
+    },
+    "collapsing.png": {
+      "x": -6.0,
+      "y": -10.33,
+      "w": 27.0,
+      "h": 28.33
+    },
+    "sleeping.png": {
+      "x": -3.67,
+      "y": 2.67,
+      "w": 22.33,
+      "h": 15.33
+    },
+    "waking.png": {
+      "x": -6.67,
+      "y": -8.67,
+      "w": 28.67,
+      "h": 26.67
+    },
+    "building.png": {
+      "x": -9.0,
+      "y": -11.67,
+      "w": 33.0,
+      "h": 29.67
+    },
+    "juggling.png": {
+      "x": -5.33,
+      "y": -10.33,
+      "w": 26.0,
+      "h": 28.33
+    },
+    "drag.png": {
+      "x": -6.33,
+      "y": -13.33,
+      "w": 27.67,
+      "h": 26.67
+    },
+    "click-left.png": {
+      "x": -6.0,
+      "y": -9.33,
+      "w": 27.0,
+      "h": 27.33
+    },
+    "click-right.png": {
+      "x": -6.33,
+      "y": -9.0,
+      "w": 27.67,
+      "h": 27.0
+    },
+    "annoyed.png": {
+      "x": -7.33,
+      "y": -8.67,
+      "w": 30.0,
+      "h": 26.67
+    },
+    "double.png": {
+      "x": -5.67,
+      "y": -9.0,
+      "w": 26.67,
+      "h": 27.0
+    },
+    "double-jump.png": {
+      "x": -7.67,
+      "y": -15.67,
+      "w": 30.0,
+      "h": 33.67
+    },
+    "look-around.png": {
+      "x": -5.67,
+      "y": -9.0,
+      "w": 26.33,
+      "h": 27.0
+    },
+    "speech-bubble.png": {
+      "x": -6.33,
+      "y": -10.67,
+      "w": 27.67,
+      "h": 28.67
+    },
+    "reading.png": {
+      "x": -7.33,
+      "y": -9.33,
+      "w": 29.67,
+      "h": 27.33
+    },
+    "outlaw.png": {
+      "x": -7.0,
+      "y": -9.0,
+      "w": 29.0,
+      "h": 27.0
+    },
+    "debugger.png": {
+      "x": -6.67,
+      "y": -9.33,
+      "w": 28.0,
+      "h": 27.33
+    },
+    "mini-idle.png": {
+      "x": -6.0,
+      "y": -8.67,
+      "w": 27.33,
+      "h": 26.67
+    },
+    "mini-alert.png": {
+      "x": -8.0,
+      "y": -9.0,
+      "w": 31.0,
+      "h": 27.0
+    },
+    "mini-happy.png": {
+      "x": -6.33,
+      "y": -9.0,
+      "w": 28.0,
+      "h": 27.0
+    },
+    "mini-enter.png": {
+      "x": -6.67,
+      "y": -8.67,
+      "w": 28.33,
+      "h": 26.67
+    },
+    "mini-peek.png": {
+      "x": -6.67,
+      "y": -9.33,
+      "w": 28.67,
+      "h": 27.33
+    },
+    "mini-working.png": {
+      "x": -6.33,
+      "y": -8.0,
+      "w": 27.67,
+      "h": 26.0
+    },
+    "mini-enter-sleep.png": {
+      "x": -6.33,
+      "y": -9.67,
+      "w": 27.67,
+      "h": 27.67
+    },
+    "mini-sleep.png": {
+      "x": -2.67,
+      "y": 1.67,
+      "w": 20.33,
+      "h": 16.33
+    },
+    "purr.png": {
+      "x": -6.67,
+      "y": -9.0,
+      "w": 28.33,
+      "h": 27.0
+    },
+    "play.png": {
+      "x": -9.0,
+      "y": -6.67,
+      "w": 33.0,
+      "h": 24.67
+    },
+    "stretch.png": {
+      "x": -7.33,
+      "y": -7.67,
+      "w": 30.0,
+      "h": 25.67
+    },
+    "mini-walk.png": {
+      "x": -7.0,
+      "y": -7.33,
+      "w": 29.0,
+      "h": 25.33
+    }
+  }
+}
